@@ -1,0 +1,69 @@
+
+    1.Find all the topics and tasks which are thought in the month of October
+
+db.topics.find({}).forEach(function(topic) {
+  db.tasks.find({ topic_id: topic._id, created_at:
+   { $gte: ISODate("2023-10-01T00:00:00Z"), 
+   $lt: ISODate("2023-11-01T00:00:00Z") } }).forEach(function(task) {
+    printjson({ topic: topic.name, task: task.description });
+  });
+});
+
+
+
+
+    2.Find all the company drives which appeared between 15 oct-2020 and 31-oct-2020
+
+    db.company_drives.find({ scheduled_date: 
+    { $gte: ISODate("2020-10-15T00:00:00Z"), 
+    $lt: ISODate("2020-11-01T00:00:00Z") } });
+
+
+
+
+
+        3. Find all the company drives and students who are appeared for the placement.
+
+        db.company_drives.aggregate([
+  { $lookup: { from: "attendance", localField: "_id", foreignField: "company_drive_id", as: "attendance" } },
+  { $unwind: "$attendance" },
+  { $lookup: { from: "users", localField: "attendance.user_id", foreignField: "_id", as: "user" } },
+  { $unwind: "$user" },
+  { $project: { company_name: 1, user_name: "$user.name" } }
+]).forEach(printjson);
+
+
+
+
+
+    4. Find the number of problems solved by the user in codekata
+
+    db.codekata.aggregate([
+  { $match: { user_id: ObjectId("your_user_id") } },
+  { $count: "problems_solved" }
+]).forEach(printjson);
+
+
+
+
+
+
+    5. Find all the mentors with who has the mentee's count more than 15
+
+    db.mentors.aggregate([
+  { $lookup: { from: "users", localField: "_id", foreignField: "mentor_id", as: "mentees" } },
+  { $project: { name: 1, mentee_count: { $size: "$mentees" } } },
+  { $match: { mentee_count: { $gt: 15 } } }
+]).forEach(printjson);
+
+
+
+
+    6. Find the number of users who are absent and task is not submitted  between 15 oct-2020 and 31-oct-2020
+
+    db.attendance.aggregate([
+  { $match: { date: { $gte: ISODate("2020-10-15T00:00:00Z"), $lt: ISODate("2020-11-01T00:00:00Z") }, is_present: false } },
+  { $lookup: { from: "tasks", localField: "session_id", foreignField: "_id", as: "tasks" } },
+  { $match: { "tasks.0": { $exists: false } } },
+  { $group: { _id: null, count: { $sum: 1 } } }
+]).forEach(printjson);

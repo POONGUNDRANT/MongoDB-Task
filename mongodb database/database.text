@@ -1,0 +1,168 @@
+Database for Zen class programme
+    1.USERS
+    {
+  _id: ObjectId('670a8c7f86a7504b1f13e859'),
+  name: 'Ganishwar Arun',
+  email: 'ganishwararun@gmail.com',
+  enrollment_date: 2023-10-01T00:00:00.000Z
+},
+{
+  _id: ObjectId('670a8c7f86a7504b1f13e85a'),
+  name: 'Arun Kumar',
+  email: 'arumstrength@yahoo.com',
+  enrollment_date: 2023-10-15T00:00:00.000Z
+};
+    
+    2. CLASSES
+{
+  _id: ObjectId('670b7e2986a7504b1f13e867'),
+  batch_id: ObjectId('6552f8900040000000000001'),
+  scheduled_date: 2023-10-25T04:30:00.000Z,
+  topic_id: ObjectId('6552f8910040000000000001'),
+  created_at: 2023-10-20T09:30:00.000Z,
+  update_at: 2023-10-20T09:30:00.000Z
+},
+{
+  _id: ObjectId('670b7e2986a7504b1f13e868'),
+  batch_id: ObjectId('6552f8900040000000000002'),
+  scheduled_date: 2023-11-01T08:30:00.000Z,
+  topic_id: ObjectId('6552f8910040000000000002'),
+  created_at: 2023-10-25T04:30:00.000Z,
+  update_at: 2023-10-25T04:30:00.000Z
+};
+
+    3.CODEKATTA
+
+    {
+  _id: ObjectId('670a8d3286a7504b1f13e85b'),
+  problem_id: 1,
+  description: 'Reverse a string',
+  difficulty: 'easy'
+}
+{
+  _id: ObjectId('670a8d3286a7504b1f13e85b'),
+  problem_id: 1,
+  description: 'Reverse a string',
+  difficulty: 'easy'
+}
+
+    4.ATTENDANCE
+    {
+  _id: ObjectId('670ae24e86a7504b1f13e85d'),
+  user_id: ObjectId('670a8c7f86a7504b1f13e859'),
+  session_id: ObjectId('6552f8910040000000000001'),
+  date: 2023-10-10T00:00:00.000Z,
+  is_present: true
+}
+{
+  _id: ObjectId('670ae24e86a7504b1f13e85e'),
+  user_id: ObjectId('670a8c7f86a7504b1f13e85a'),
+  session_id: ObjectId('6552f8910040000000000001'),
+  date: 2023-10-10T00:00:00.000Z,
+  is_present: false
+}
+
+    5.TOPICS
+    {
+  _id: ObjectId('670b78be86a7504b1f13e85f'),
+  topic_id: 1,
+  topic_name: 'Basic JavaScript',
+  topics_contents: 'array & objects',
+  task_id: 1,
+  created_at: 2023-10-13T07:34:13.000Z
+}
+{
+  _id: ObjectId('670b78be86a7504b1f13e860'),
+  topic_id: 2,
+  topic_name: 'Advanced JavaScript',
+  topics_contents: 'closures, promises, async/await',
+  task_id: 2,
+  created_at: 2023-10-15T10:00:00.000Z
+}
+{
+  _id: ObjectId('670b78be86a7504b1f13e861'),
+  topic_id: 3,
+  topic_name: 'React Fundamentals',
+  topics_contents: 'components, state, props',
+  task_id: 3,
+  created_at: 2023-10-17T04:30:00.000Z
+}
+
+    6.TASKS
+    {
+  _id: ObjectId('670b7a6486a7504b1f13e862'),
+  task_name: 'Introduction to JavaScript',
+  task_content: 'Learn the basics of JavaScript syntax, variables, data types, and control flow.',
+  tags: [
+    'javascript',
+    'fundamentals'
+  ],
+  created_at: 2023-10-15T04:30:00.000Z,
+  update_at: 2023-10-15T04:30:00.000Z
+}
+{
+  _id: ObjectId('670b7a6486a7504b1f13e863'),
+  task_name: 'DOM Manipulation',
+  task_content: 'Learn how to interact with HTML elements using JavaScript.',
+  tags: [
+    'javascript',
+    'dom'
+  ],
+  created_at: 2023-10-17T06:30:00.000Z,
+  update_at: 2023-10-17T06:30:00.000Z
+}
+
+    7.COMPANY_DRIVES
+    {
+  _id: ObjectId('670b7d0d86a7504b1f13e864'),
+  company_name: 'TechGiant Inc.',
+  scheduled_date: 2023-10-25T04:30:00.000Z,
+  students_attended_id: [
+    ObjectId('6552f8900040000000000001'),
+    ObjectId('6552f8900040000000000002')
+  ],
+  created_at: 2023-10-20T09:30:00.000Z,
+  update_at: 2023-10-20T09:30:00.000Z
+}
+{
+  _id: ObjectId('670b7d0d86a7504b1f13e865'),
+  company_name: 'Tata Consultancy Services.',
+  scheduled_date: 2023-11-01T08:30:00.000Z,
+  students_attended_id: [
+    ObjectId('6552f8900040000000000003'),
+    ObjectId('6552f8900040000000000004')
+  ],
+  created_at: 2023-10-25T04:30:00.000Z,
+  update_at: 2023-10-25T04:30:00.000Z
+}
+{
+  _id: ObjectId('670b7d0d86a7504b1f13e866'),
+  company_name: 'Infosys Technologies pvt Ltd.',
+  scheduled_date: 2023-11-15T10:30:00.000Z,
+  students_attended_id: [
+    ObjectId('6552f8900040000000000005'),
+    ObjectId('6552f8900040000000000006')
+  ],
+  created_at: 2023-11-10T06:30:00.000Z,
+  update_at: 2023-11-10T06:30:00.000Z
+}
+
+    8. MENTORS
+   {
+  _id: ObjectId('670b92cc86a7504b1f13e869'),
+  mentor_id: ObjectId('6552f8900040000000000001'),
+  mentor_name: 'PUGAZHARASAN.C',
+  expertise: 'JavaScript and FrontEndDeveloper',
+  mentee_count: 10,
+  created_at: 2023-10-15T06:30:00.000Z,
+  update_at: 2023-10-15T06:30:00.000Z
+}
+  {
+  _id: ObjectId('670b92cc86a7504b1f13e86a'),
+  mentor_id: ObjectId('6552f8900040000000000002'),
+  mentor_name: 'VishnuVaradhan',
+  expertise: 'SQL, NODE.JS and',
+  mentee_count: 8,
+  created_at: 2023-11-01T08:30:00.000Z,
+  update_at: 2023-11-01T08:30:00.000Z
+}
